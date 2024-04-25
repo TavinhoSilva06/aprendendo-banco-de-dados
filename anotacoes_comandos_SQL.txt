@@ -1,0 +1,13 @@
+Exemplos de comandos PostgreSQL:
+
+CREATE TABLE clube_titulo (
+id SERIAL PRIMARY KEY NOT NULL,
+id_clubes integer references clubes NOT NULL,
+id_titulos integer references titulos NOT NULL
+)
+
+insert into clube_titulo (id_clubes, id_titulos) values (1, 7)
+
+select * from clube_titulo where id_clubes = 3 
+
+delete from clube_titulo where id = 1
