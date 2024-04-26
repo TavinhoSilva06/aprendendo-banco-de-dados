@@ -8,6 +8,10 @@ id_titulos integer references titulos NOT NULL
 
 insert into clube_titulo (id_clubes, id_titulos) values (1, 7)
 
-select * from clube_titulo where id_clubes = 3 
+select * ("*" seleciona todas as colunas) from clube_titulo where id_clubes = 3 
 
 delete from clube_titulo where id = 1
+
+update clube_titulo
+set id_clubes = 1
+where id = 1
