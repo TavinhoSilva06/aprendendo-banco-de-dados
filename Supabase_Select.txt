@@ -1,0 +1,33 @@
+CÓDIGOS DE SELECT SQL 
+
+
+--select nome, cidade, estado, ano_criacao
+--from clubes
+--where id = 1
+
+--Explicação: Irá selecionar uma linha das coulunas onde tenha os atributos de cada tópico, e essa linha será o ID = 1, ou seja, a primeira linha
+--inteira.
+
+
+
+--select *
+--from clubes
+--where nome = 'Corinthians';
+
+--Explicação: Irá procurar na tabela "clubes", na coluna "nome", a palavra "Corinthians".
+
+
+--select nome
+--from clubes
+--where nome like 'C';
+
+--Explicação: Irá procurar na tabela "clubes", na coluna "nome", uma palavra que comece/tenha (com) a letra "C".
+
+
+--SELECT nome, cidade, estado
+--FROM clubes
+--WHERE ano_criacao <= '1930-01-25';
+
+--Explicação: Irá encontrar na tabela "clubes", nas colunas "nome", "cidade" e "estado", a linha que contém a data(ano_criacao) que foi escrita.
+-- Pode se achar mais de uma linha apenas colocando a data e na frente ">=", ou seja, uma data que seja maior ou igual a aquele valor.
+

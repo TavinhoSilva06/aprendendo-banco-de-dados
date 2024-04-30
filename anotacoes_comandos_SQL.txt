@@ -15,3 +15,5 @@ delete from clube_titulo where id = 1
 update clube_titulo
 set id_clubes = 1
 where id = 1
+
+
