@@ -1,0 +1,89 @@
+Exercício (1) - TABELA COMPRAS
+
+--CREATE TABLE compras (
+    --id SERIAL PRIMARY KEY NOT NULL,
+    --id_nf numeric(3),
+    --id_item numeric (3),
+    --cod_prod numeric (3),
+    --valor_unit numeric (10),
+    --quantidade numeric (10),
+    --desconto numeric (3)
+  --);
+
+
+--INSERT into compras (id_nf, id_item, cod_prod, valor_unit, quantidade, desconto)
+            --VALUES (7, 4, 5, 30, 10, 1);
+
+
+--Exercício 1 (A) O
+--select id_nf, id_item, cod_prod, valor_unit, quantidade, desconto
+--from compras
+--where desconto = 0 or desconto IS NULL
+
+
+--Exercício 1 (B) O
+--select id_item, cod_prod, valor_unit, quantidade, desconto
+--from compras
+--where desconto >= 1
+
+
+--Exercício 1 (C) O
+--update compras
+--set desconto = 0
+--where desconto IS NULL
+
+
+--Exercício 1 (D) O
+--select id_nf, id_item, cod_prod, valor_unit, quantidade, desconto, quantidade * valor_unit AS --valor_total, VALOR_UNIT - (VALOR_UNIT*(DESCONTO/100)) AS valor_vendido
+--from compras
+
+
+--Exercício 1 (E) O
+--select id_nf, sum(quantidade * valor_unit) AS valor_total
+--from compras
+--group by id_nf
+--order by valor_total desc
+
+
+--Exercício 1 (F) O
+--select id_nf, sum (VALOR_UNIT - (VALOR_UNIT*(DESCONTO/100))) AS valor_vendido
+--from compras
+--group by id_nf
+--order by valor_vendido desc
+
+--Exercício 1 (G) O
+--select id_nf, id_item, cod_prod, valor_unit, quantidade, desconto
+--from compras
+--where id = 21
+
+
+--Exercício 1 (H) O
+--select id_nf, id_item, cod_prod, valor_unit, quantidade, desconto
+--from compras
+--where quantidade >= 10
+
+--Exercício 1 (I) O
+--select * from (
+--select id_nf, sum(quantidade * valor_unit) AS valor_total
+--from compras
+--group by id_nf
+--order by valor_total desc
+--) 
+--AS tabela_mentira
+--where tabela_mentira.valor_total > 500
+
+
+--Exercício 1 (J) O
+--select cod_prod, AVG(desconto) AS media from compras
+--group by cod_prod
+--order by cod_prod asc
+
+
+--Exercício 1 (K) O
+--select cod_prod, min(desconto) AS menor, max(desconto) AS maior, AVG(desconto) AS media
+--from compras
+--group by cod_prod
+--order by cod_prod asc
+
+--Exercício 1 (L) O
+--select id_nf, count(*) from compras group by id_nf having count(*) > 3 order by count(*) asc

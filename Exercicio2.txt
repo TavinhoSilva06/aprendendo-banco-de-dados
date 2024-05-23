@@ -1,0 +1,86 @@
+Exercício (2) - BASE DE DADOS UNIVERSIDADE
+
+TABELA - ALUNOS
+--CREATE TABLE alunos (
+    --id SERIAL PRIMARY KEY NOT NULL,
+    --MAT Char(10),
+    --nome Varchar(250),
+    --endereco Varchar(275),
+    --cidade Varchar(300)
+    ----data_nascimento DATE,
+    ----hora_aula TIME,
+  --);
+
+ 
+--INSERT into alunos (mat, nome, endereco, cidade)
+            --VALUES (2015010106, 'JOSUÉLISSON CLAUDINO DOS SANTOS', 'CENTRO', 'NATAL');
+
+
+
+TABELA - DISCIPLINAS
+--CREATE TABLE disciplinas (
+    --id SERIAL PRIMARY KEY NOT NULL,
+    --cod_disc Varchar(3),
+    --nome_disc Varchar (250),
+    --carga_hor Numeric (10)
+  --);
+
+ 
+--INSERT into disciplinas (cod_disc, nome_disc, carga_hor)
+            --VALUES ('ENG', 'ENGENHARIA DE SOFTWARE', 80);
+
+
+
+TABELA - PROFESORES
+--CREATE TABLE professores (
+    --id SERIAL PRIMARY KEY NOT NULL,
+    --cod_prof Char(6),
+    --nome Varchar(250),
+    --endereco Varchar (275),
+    --cidade Varchar (300)
+  --);
+
+
+--INSERT into professores (cod_prof, nome, endereco, cidade)
+            --VALUES (192011, 'DIEGO OLIVEIRA', 'AVENIDA ROBERTO FREIRE', 'NATAL');
+
+
+
+TABELA - TURMA
+--CREATE TABLE turma (
+    --id SERIAL PRIMARY KEY NOT NULL,
+    --cod_disc integer references disciplinas NOT NULL,
+    --cod_turma Varchar(250),
+    --cod_prof integer references professores NOT NULL,
+    --ano Date,
+    --horario Time 
+  --);
+
+ 
+--INSERT into turma (cod_disc, cod_turma, cod_prof, ano, horario, horario_f)
+            --VALUES (4, 1, 2, '2015-01-01', '10:00', '11:00');
+
+
+--ALTER TABLE turma
+--ADD horario_f time;
+
+
+--delete from turma
+--where id = 4
+
+
+
+TABELA - HISTÓRICO
+--CREATE TABLE historico (
+    --id SERIAL PRIMARY KEY NOT NULL,
+    --mat integer references alunos NOT NULL,
+    --cod_disc integer references turma NOT NULL,
+    --cod_turma integer references turma NOT NULL,
+    --cod_prof integer references turma NOT NULL,
+    --ano integer references turma NOT NULL,
+    --frequencia float (5),
+    --nota numeric (5)
+--);
+
+--INSERT into historico (mat, cod_disc, cod_turma, cod_prof, ano, frequencia, nota)
+            --VALUES (1, 1, 1, 212131, 1, 75, 7);
