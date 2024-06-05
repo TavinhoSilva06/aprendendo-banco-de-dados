@@ -1,86 +1,137 @@
 Exercício (2) - BASE DE DADOS UNIVERSIDADE
 
-TABELA - ALUNOS
 --CREATE TABLE alunos (
     --id SERIAL PRIMARY KEY NOT NULL,
-    --MAT Char(10),
+    --MAT Varchar(10) UNIQUE,
     --nome Varchar(250),
     --endereco Varchar(275),
-    --cidade Varchar(300)
-    ----data_nascimento DATE,
-    ----hora_aula TIME,
-  --);
+    --cidade Varchar(300),
+    --data_nascimento DATE,
+    --hora_aula TIME
+  --)
 
- 
---INSERT into alunos (mat, nome, endereco, cidade)
-            --VALUES (2015010106, 'JOSUÉLISSON CLAUDINO DOS SANTOS', 'CENTRO', 'NATAL');
+ --alter table alunos add unique(MAT);
+
+ INSERT into alunos (MAT, nome, endereco, cidade)
+            VALUES (2015010101, 'JOSÉ DE AÇEMCAR', 'RUA DAS ALMAS', 'NATAL');
+
+ INSERT into alunos (MAT, nome, endereco, cidade)
+            VALUES (2015010102, 'JOÃO JOSÉ', 'AVENIDA RUY CARNEIRO', 'JOÃO PESSOA');
+
+ INSERT into alunos (MAT, nome, endereco, cidade)
+            VALUES (2015010103, 'MARIA JOAQUINA', 'RUA CARROSSEL', 'RECIFE');
+
+ INSERT into alunos (MAT, nome, endereco, cidade)
+            VALUES (2015010107, 'FELIPE JACINTO', 'RUA DAS LADEIRAS', 'FORTALEZA');
+
+ INSERT into alunos (MAT, nome, endereco, cidade)
+            VALUES (2015010105, 'JOSUÉ CLAUDINO DOS SANTOS', 'RUA CENTRO', 'NATAL');
+
+ INSERT into alunos (MAT, nome, endereco, cidade)
+            VALUES (2015010106, 'JOSUÉLISSON CLAUDINO DOS SANTOS', 'RUA CENTRO', 'NATAL');
 
 
-
-TABELA - DISCIPLINAS
 --CREATE TABLE disciplinas (
     --id SERIAL PRIMARY KEY NOT NULL,
     --cod_disc Varchar(3),
     --nome_disc Varchar (250),
     --carga_hor Numeric (10)
   --);
-
+  
+ --Drop table disciplinas
+ 
+alter table disciplinas add unique(cod_disc);
  
 --INSERT into disciplinas (cod_disc, nome_disc, carga_hor)
             --VALUES ('ENG', 'ENGENHARIA DE SOFTWARE', 80);
 
 
-
-TABELA - PROFESORES
 --CREATE TABLE professores (
     --id SERIAL PRIMARY KEY NOT NULL,
     --cod_prof Char(6),
     --nome Varchar(250),
     --endereco Varchar (275),
     --cidade Varchar (300)
-  --);
+   --);
 
+ --Drop table professores
+
+alter table professores add unique(cod_prof);
 
 --INSERT into professores (cod_prof, nome, endereco, cidade)
             --VALUES (192011, 'DIEGO OLIVEIRA', 'AVENIDA ROBERTO FREIRE', 'NATAL');
 
+          
+/*CREATE TABLE turma (
+    id SERIAL PRIMARY KEY NOT NULL,
+    cod_turma varchar(250) NOT NULL,
+    COD_DISC varchar(3) NOT NULL,
+    COD_PROF Char(6) NOT NULL,
+    Foreign key (COD_DISC) references disciplinas (cod_disc),
+    Foreign key (COD_PROF) references professores (cod_prof),
+    ano Date,
+    horario_I time,
+    horario_F time 
+);*/
+
+--Drop table turma
+--alter table turma add unique(cod_turma)
+
+ INSERT into turma (cod_disc, cod_turma, cod_prof, ano, horario_I, horario_F)
+            VALUES ('ENG', 111, 122135, '2015-01-01', '10:00', '11:00');
 
 
-TABELA - TURMA
---CREATE TABLE turma (
-    --id SERIAL PRIMARY KEY NOT NULL,
-    --cod_disc integer references disciplinas NOT NULL,
-    --cod_turma Varchar(250),
-    --cod_prof integer references professores NOT NULL,
-    --ano Date,
-    --horario Time 
-  --);
-
- 
---INSERT into turma (cod_disc, cod_turma, cod_prof, ano, horario, horario_f)
-            --VALUES (4, 1, 2, '2015-01-01', '10:00', '11:00');
-
-
---ALTER TABLE turma
---ADD horario_f time;
-
-
---delete from turma
---where id = 4
-
-
-
-TABELA - HISTÓRICO
 --CREATE TABLE historico (
     --id SERIAL PRIMARY KEY NOT NULL,
-    --mat integer references alunos NOT NULL,
-    --cod_disc integer references turma NOT NULL,
-    --cod_turma integer references turma NOT NULL,
-    --cod_prof integer references turma NOT NULL,
-    --ano integer references turma NOT NULL,
+    --mat Char(10) NOT NULL,
+    --codigo_disciplina varchar(3) NOT NULL,
+    --CODIGO_TURMA varchar(250) NOT NULL,
+    --CODIGO_PROFESSOR Char(6) NOT NULL,
+    --ANO Date NOT NULL,
+    --Foreign key (mat) references alunos (MAT),
+    --Foreign key (codigo_disciplina) references disciplinas (COD_DISC),
+    --Foreign key (CODIGO_TURMA) references turma (cod_turma),
+    --Foreign key (CODIGO_PROFESSOR) references professores (COD_PROF),
+    --Foreign key (ANO) references turma (ano),
     --frequencia float (5),
     --nota numeric (5)
---);
+ --);
 
---INSERT into historico (mat, cod_disc, cod_turma, cod_prof, ano, frequencia, nota)
-            --VALUES (1, 1, 1, 212131, 1, 75, 7);
+--Drop table historico
+
+--INSERT into historico (mat, codigo_disciplina, CODIGO_TURMA, CODIGO_PROFESSOR, ANO, frequencia, nota)
+            --VALUES (2015010106, 'ENG', 101, 122135, '2015-01-01', 75, 7);
+
+
+
+ --Exercício 2 (A) O
+ /*select mat, codigo_disciplina, nota, ano
+ from historico
+ where nota < 8 and codigo_disciplina = 'BD' and ano = '2015-01-01'*/
+
+
+ --Exercício 2 (B) O
+ /*select AVG (nota) as nota
+  from historico
+  where codigo_disciplina = 'WEB' and ano = '2015-01-01'
+  group by codigo_disciplina*/
+
+ --
+ 
+ 
+ --Exercício 2 (C)
+ /*select AVG (nota) as media 
+  from historico
+  where codigo_disciplina = 'BD' 
+  group by codigo_disciplina 
+  having AVG (nota) > 6*/
+ 
+ 
+ --Exercício 2 (D) O
+ /*select cidade, count(*) 
+ from alunos 
+ where cidade <> 'NATAL'
+ group by cidade*/
+ 
+
+ 
