@@ -1,0 +1,27 @@
+/*CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(20),
+    cidade VARCHAR(50),
+    estado VARCHAR(2)
+);*/
+
+/*INSERT INTO clientes (nome, email, telefone, cidade, estado)
+VALUES ('Clebinho Jacinto', 'jacinto@email.com', '55091-2435', 'Santos', 'SP');*/
+
+/*select * from clientes;*/
+
+/*select nome, email from clientes;*/
+
+/*select * from clientes where estado = 'RJ';*/
+
+/*select * from clientes order by nome;*/
+
+/*select count(*) from clientes;*/
+
+/*select * from clientes where cidade = 'São Paulo';*/
+
+/*update clientes set email = 'clebinemail@email.com' where id = 1;*/
+
+/*select * from clientes where nome like '%Felype%';*/
